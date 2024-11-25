@@ -2,37 +2,36 @@
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
-namespace OcelotAuthorization.Auth.Extensions
+namespace OcelotAuthorization.Auth.Extensions;
+
+public static class DependencyInjectionExtension
 {
-    public static class DependencyInjectionExtension
-    {
-        public static IServiceCollection AddAuthenticationService(
-    this IServiceCollection services,
-    WebApplicationBuilder builder
+    public static IServiceCollection AddAuthenticationService(
+this IServiceCollection services,
+WebApplicationBuilder builder
 )
-        {
-            builder
-                .Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(options =>
+    {
+        builder
+            .Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer(options =>
+            {
+                options.RequireHttpsMetadata = false;
+                options.SaveToken = true;
+                options.TokenValidationParameters = new TokenValidationParameters()
                 {
-                    options.RequireHttpsMetadata = false;
-                    options.SaveToken = true;
-                    options.TokenValidationParameters = new TokenValidationParameters()
-                    {
-                        ValidateIssuer = true,
-                        ValidateLifetime = true,
-                        ValidateAudience = true,
-                        ValidAudience = builder.Configuration["Jwt:Audience"],
-                        ValidIssuer = builder.Configuration["Jwt:Issuer"],
-                        IssuerSigningKey = new SymmetricSecurityKey(
-                            Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!)
-                        )
-                    };
-                });
+                    ValidateIssuer = true,
+                    ValidateLifetime = true,
+                    ValidateAudience = true,
+                    ValidAudience = builder.Configuration["Jwt:Audience"],
+                    ValidIssuer = builder.Configuration["Jwt:Issuer"],
+                    IssuerSigningKey = new SymmetricSecurityKey(
+                        Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!)
+                    )
+                };
+            });
 
-            builder.Services.AddAuthorization();
+        builder.Services.AddAuthorization();
 
-            return services;
-        }
+        return services;
     }
 }
