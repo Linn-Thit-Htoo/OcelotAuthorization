@@ -18,7 +18,12 @@ public class TokenController : ControllerBase
     public IActionResult GenerateToken()
     {
         string[] scopes = { "blog.read" };
-        string token = _jWTAuth.GetJWTToken(Guid.NewGuid().ToString(), "mglinnthithtoo@gmail.com", "admin", scopes);
+        string token = _jWTAuth.GetJWTToken(
+            Guid.NewGuid().ToString(),
+            "mglinnthithtoo@gmail.com",
+            "admin",
+            scopes
+        );
 
         return Ok(token);
     }
