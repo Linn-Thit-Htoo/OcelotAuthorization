@@ -1,7 +1,12 @@
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Configuration.SetBasePath(builder.Environment.ContentRootPath)
-    .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: false, reloadOnChange: true)
+builder
+    .Configuration.SetBasePath(builder.Environment.ContentRootPath)
+    .AddJsonFile(
+        $"appsettings.{builder.Environment.EnvironmentName}.json",
+        optional: false,
+        reloadOnChange: true
+    )
     .AddEnvironmentVariables();
 
 builder.Services.AddControllers();
