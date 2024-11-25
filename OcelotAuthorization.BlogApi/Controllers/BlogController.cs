@@ -17,15 +17,15 @@ public class BlogController : ControllerBase
                 BlogId = 1,
                 BlogTitle = "Blog Title 1",
                 BlogAuthor = "Blog Author 1",
-                BlogContent = "Blog Content 1"
+                BlogContent = "Blog Content 1",
             },
             new BlogModel()
             {
                 BlogId = 2,
                 BlogTitle = "Blog Title 2",
                 BlogAuthor = "Blog Author 2",
-                BlogContent = "Blog Content 2"
-            }
+                BlogContent = "Blog Content 2",
+            },
         };
 
         return Ok(lst);
