@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/OcelotAuthorization.Auth/appsettings.Development.json
+/OcelotAuthorization.BlogApi/appsettings.Development.json
+/OcelotAuthorization.Gateway/appsettings.Development.json
