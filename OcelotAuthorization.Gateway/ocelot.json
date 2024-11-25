@@ -1,0 +1,24 @@
+{
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:7049"
+  },
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/gateway/api/blog/{everything}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamPathTemplate": "/api/blog",
+      "DownstreamScheme": "https",
+      "RouteIsCaseSensitive": false,
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7136
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": [ "blog.read" ]
+      }
+    }
+  ]
+}

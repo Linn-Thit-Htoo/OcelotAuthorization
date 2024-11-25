@@ -1,0 +1,6 @@
+@OcelotAuthorization.Auth_HostAddress = http://localhost:5093
+
+GET {{OcelotAuthorization.Auth_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

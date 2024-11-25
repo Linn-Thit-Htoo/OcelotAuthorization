@@ -1,0 +1,6 @@
+@OcelotAuthorization.BlogApi_HostAddress = http://localhost:5157
+
+GET {{OcelotAuthorization.BlogApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
